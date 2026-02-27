@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/mundoyatranew/static/css/main.83d16429.css",
+    "main.js": "/mundoyatranew/static/js/main.50fdfb95.js",
+    "index.html": "/mundoyatranew/index.html",
+    "main.83d16429.css.map": "/mundoyatranew/static/css/main.83d16429.css.map",
+    "main.50fdfb95.js.map": "/mundoyatranew/static/js/main.50fdfb95.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.83d16429.css",
+    "static/js/main.50fdfb95.js"
+  ]
+}
