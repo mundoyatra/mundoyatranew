@@ -11,9 +11,14 @@ import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 
 function App() {
+  const basename =
+    process.env.NODE_ENV === "production"
+      ? "/mundoyatranew"
+      : "/";
+
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
