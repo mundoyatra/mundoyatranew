@@ -14,7 +14,7 @@ const DestinationModal = ({ destination, isOpen, onClose }) => {
   const handleBookNow = () => {
     if (!destination) return;
     const message = `Hi! I'm interested in booking the *${destination.name}* package (${destination.duration}) starting from ${destination.price}. Please share more details.`;
-    const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/919354262859?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
   

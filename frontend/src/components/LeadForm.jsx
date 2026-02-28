@@ -83,7 +83,7 @@ const LeadForm = () => {
                     id="phone"
                     name="phone"
                     type="tel"
-                    placeholder="+91 98765 43210"
+                    placeholder="+91 93542 62859"
                     value={formData.phone}
                     onChange={handleChange}
                     required

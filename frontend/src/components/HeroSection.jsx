@@ -22,7 +22,7 @@ const HeroSection = () => {
   };
 
   const handleWhatsApp = () => {
-    window.open('https://wa.me/919876543210', '_blank');
+    window.open('https://wa.me/919354262859', '_blank');
   };
 
   const scrollToLeadForm = () => {

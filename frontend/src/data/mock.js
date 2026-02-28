@@ -359,9 +359,9 @@ export const aboutContent = {
 };
 
 export const contactInfo = {
-  phone: '+91-98765-43210',
+  phone: '+91-9354262859',
   email: 'info@mundoyatra.com',
-  whatsapp: '+919876543210',
+  whatsapp: '+919354262859',
   address: 'Shop No. 12, Travel Plaza, MG Road, Bangalore - 560001, Karnataka, India',
   hours: 'Mon - Sat: 9:00 AM - 7:00 PM | Sun: 10:00 AM - 5:00 PM'
 };
