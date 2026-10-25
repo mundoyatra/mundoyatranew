@@ -112,8 +112,7 @@ const Privacy = () => {
                   <p className="text-gray-700">Email: info@mundoyatra.com</p>
                   <p className="text-gray-700">Phone: +91-9354262859</p>
                   <p className="text-gray-700">
-                    Address: Shop No. 12, Travel Plaza, MG Road, Bangalore - 560001, Karnataka,
-                    India
+                    Address: 202 F/F Uttam Nagar, Nawada Back Side, Sainik Nagar, Delhi, 110059
                   </p>
                 </div>
               </div>

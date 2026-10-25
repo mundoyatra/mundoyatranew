@@ -21,8 +21,8 @@ const Terms = () => {
           <div className="prose prose-lg max-w-none">
             <div className="bg-blue-50 rounded-lg p-6 mb-8">
               <p className="text-gray-700 leading-relaxed">
-                These Terms of Service govern your use of Mundo Yatra's website and travel
-                services. By booking with us or using this website, you agree to the terms below.
+                These Terms of Service govern your use of Mundo Yatra's website and travel services.
+                By booking with us or using this website, you agree to the terms below.
               </p>
             </div>
 
@@ -30,9 +30,9 @@ const Terms = () => {
               <div>
                 <h2 className="text-2xl font-bold text-blue-900 mb-4">Bookings &amp; Payments</h2>
                 <p className="text-gray-700 mb-3">
-                  All bookings are subject to availability and confirmation. Prices quoted are
-                  valid at the time of inquiry and may change based on availability, season, or
-                  supplier pricing until a booking is confirmed with payment.
+                  All bookings are subject to availability and confirmation. Prices quoted are valid
+                  at the time of inquiry and may change based on availability, season, or supplier
+                  pricing until a booking is confirmed with payment.
                 </p>
               </div>
 
@@ -60,9 +60,9 @@ const Terms = () => {
               <div>
                 <h2 className="text-2xl font-bold text-blue-900 mb-4">Limitation of Liability</h2>
                 <p className="text-gray-700">
-                  Mundo Yatra acts as an agent for airlines, hotels, and other service providers
-                  and is not liable for their acts, omissions, delays, or changes. Travel insurance
-                  is recommended for all bookings.
+                  Mundo Yatra acts as an agent for airlines, hotels, and other service providers and
+                  is not liable for their acts, omissions, delays, or changes. Travel insurance is
+                  recommended for all bookings.
                 </p>
               </div>
 
@@ -83,8 +83,7 @@ const Terms = () => {
                   <p className="text-gray-700">Email: info@mundoyatra.com</p>
                   <p className="text-gray-700">Phone: +91-9354262859</p>
                   <p className="text-gray-700">
-                    Address: Shop No. 12, Travel Plaza, MG Road, Bangalore - 560001, Karnataka,
-                    India
+                    Address: 202 F/F Uttam Nagar, Nawada Back Side, Sainik Nagar, Delhi, 110059
                   </p>
                 </div>
               </div>
