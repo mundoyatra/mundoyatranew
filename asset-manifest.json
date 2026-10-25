@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/mundoyatranew/static/css/main.e22c0721.css",
-    "main.js": "/mundoyatranew/static/js/main.6978e70f.js",
-    "index.html": "/mundoyatranew/index.html",
-    "main.e22c0721.css.map": "/mundoyatranew/static/css/main.e22c0721.css.map",
-    "main.6978e70f.js.map": "/mundoyatranew/static/js/main.6978e70f.js.map"
+    "main.css": "/static/css/main.e22c0721.css",
+    "main.js": "/static/js/main.0a0cb239.js",
+    "index.html": "/index.html",
+    "main.e22c0721.css.map": "/static/css/main.e22c0721.css.map",
+    "main.0a0cb239.js.map": "/static/js/main.0a0cb239.js.map"
   },
   "entrypoints": [
     "static/css/main.e22c0721.css",
-    "static/js/main.6978e70f.js"
+    "static/js/main.0a0cb239.js"
   ]
 }
