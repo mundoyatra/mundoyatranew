@@ -15,16 +15,16 @@ import {
   internationalDestinations,
   testimonials,
   whyChooseUs,
-  aboutContent
+  aboutContent,
 } from '../data/mock';
 
 const iconMap = {
   'badge-indian-rupee': 'BadgeIndianRupee',
-  'headset': 'Headset',
-  'sparkles': 'Sparkles',
-  'award': 'Award',
-  'network': 'Network',
-  'shield-check': 'ShieldCheck'
+  headset: 'Headset',
+  sparkles: 'Sparkles',
+  award: 'Award',
+  network: 'Network',
+  'shield-check': 'ShieldCheck',
 };
 
 const Home = () => {
@@ -44,7 +44,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-      
+
       {/* Hero Section */}
       <HeroSection />
 
@@ -111,15 +111,9 @@ const Home = () => {
               <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
                 {aboutContent.title}
               </h2>
-              <p className="text-lg text-yellow-600 font-semibold mb-4">
-                {aboutContent.subtitle}
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                {aboutContent.description}
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                {aboutContent.mission}
-              </p>
+              <p className="text-lg text-yellow-600 font-semibold mb-4">{aboutContent.subtitle}</p>
+              <p className="text-gray-700 leading-relaxed mb-6">{aboutContent.description}</p>
+              <p className="text-gray-700 leading-relaxed mb-6">{aboutContent.mission}</p>
               <ul className="space-y-3">
                 {aboutContent.values.map((value, index) => (
                   <li key={index} className="flex items-start space-x-3">
@@ -133,6 +127,7 @@ const Home = () => {
               <img
                 src={aboutContent.image}
                 alt="About Mundo Yatra"
+                loading="lazy"
                 className="rounded-lg shadow-2xl w-full h-[500px] object-cover"
               />
               <div className="absolute -bottom-6 -left-6 bg-yellow-400 text-blue-900 p-6 rounded-lg shadow-xl">
@@ -155,7 +150,8 @@ const Home = () => {
               Comprehensive Travel Solutions
             </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              From flight bookings to complete holiday packages, we handle every aspect of your travel needs
+              From flight bookings to complete holiday packages, we handle every aspect of your
+              travel needs
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -184,7 +180,10 @@ const Home = () => {
             {whyChooseUs.map((item) => {
               const IconComponent = LucideIcons[iconMap[item.icon]] || LucideIcons.Circle;
               return (
-                <Card key={item.id} className="border-2 border-gray-200 hover:border-yellow-400 transition-colors bg-white">
+                <Card
+                  key={item.id}
+                  className="border-2 border-gray-200 hover:border-yellow-400 transition-colors bg-white"
+                >
                   <CardContent className="p-6 text-center">
                     <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-yellow-400 mb-4">
                       <IconComponent className="w-8 h-8 text-blue-900" />

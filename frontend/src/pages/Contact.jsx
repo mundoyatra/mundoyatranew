@@ -9,7 +9,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-      
+
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-b from-blue-900 to-blue-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -43,17 +43,13 @@ const Contact = () => {
             <div className="bg-white rounded-lg shadow-xl p-6 text-center border-t-4 border-yellow-400">
               <MapPin className="w-10 h-10 text-blue-900 mx-auto mb-4" />
               <h3 className="font-semibold text-blue-900 mb-2">Visit Us</h3>
-              <p className="text-gray-600 text-sm">
-                {contactInfo.address}
-              </p>
+              <p className="text-gray-600 text-sm">{contactInfo.address}</p>
             </div>
 
             <div className="bg-white rounded-lg shadow-xl p-6 text-center border-t-4 border-yellow-400">
               <Clock className="w-10 h-10 text-blue-900 mx-auto mb-4" />
               <h3 className="font-semibold text-blue-900 mb-2">Business Hours</h3>
-              <p className="text-gray-600 text-sm">
-                {contactInfo.hours}
-              </p>
+              <p className="text-gray-600 text-sm">{contactInfo.hours}</p>
             </div>
           </div>
 

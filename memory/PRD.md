@@ -83,9 +83,9 @@ Create a modern, premium, SEO-optimized travel agency website for "Mundo Yatra",
 - **Styling**: Tailwind CSS
 - **Notifications**: Sonner
 
-### Backend (Not Yet Implemented)
-- FastAPI (ready for implementation)
-- MongoDB (configured)
+### Backend
+- Node.js + Express
+- MySQL
 
 ## API Contracts (To Be Implemented)
 
@@ -192,7 +192,6 @@ Response: {
 - Needs invoicing and documentation
 
 ## Technical Notes
-- Frontend URL: https://explore-mundo-yatra.preview.emergentagent.com
 - Backend API prefix: /api
 - Environment variables properly configured
 - Hot reload enabled for development

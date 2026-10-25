@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import {
-  Dialog,
-  DialogContent,
-} from './ui/dialog';
+import PropTypes from 'prop-types';
+import { Dialog, DialogContent } from './ui/dialog';
 import { Button } from './ui/button';
 import { X, MapPin, Clock, CheckCircle, MessageCircle, Calendar } from 'lucide-react';
 import { Badge } from './ui/badge';
@@ -25,12 +23,12 @@ const DestinationModal = ({ destination, isOpen, onClose }) => {
         showCloseButton={false}
         className="max-w-5xl w-[95vw] h-[95vh] p-0 overflow-hidden rounded-2xl flex flex-col"
       >
-
         {/* Hero Section */}
         <div className="relative h-44 w-full flex-shrink-0">
           <img
             src={destination.image}
             alt={destination.name}
+            loading="lazy"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
@@ -47,9 +45,7 @@ const DestinationModal = ({ destination, isOpen, onClose }) => {
             <div>
               <div className="flex items-center space-x-2 mb-1">
                 <MapPin className="w-4 h-4 text-yellow-400" />
-                <h2 className="text-xl font-bold text-white">
-                  {destination.name}
-                </h2>
+                <h2 className="text-xl font-bold text-white">{destination.name}</h2>
               </div>
               <div className="flex items-center space-x-2 text-gray-200 text-xs">
                 <Clock className="w-3 h-3" />
@@ -65,12 +61,9 @@ const DestinationModal = ({ destination, isOpen, onClose }) => {
 
         {/* Scrollable Content */}
         <div className="flex-1 overflow-y-auto px-6 py-4 space-y-5 bg-white">
-
           {/* Description */}
           <div>
-            <p className="text-gray-700 text-base leading-relaxed">
-              {destination.description}
-            </p>
+            <p className="text-gray-700 text-base leading-relaxed">{destination.description}</p>
           </div>
 
           {/* Highlights */}
@@ -84,9 +77,7 @@ const DestinationModal = ({ destination, isOpen, onClose }) => {
               {destination.highlights.map((highlight, index) => (
                 <div key={index} className="flex items-start space-x-2">
                   <CheckCircle className="w-4 h-4 text-green-500 mt-1" />
-                  <span className="text-gray-700 text-sm">
-                    {highlight}
-                  </span>
+                  <span className="text-gray-700 text-sm">{highlight}</span>
                 </div>
               ))}
             </div>
@@ -101,34 +92,23 @@ const DestinationModal = ({ destination, isOpen, onClose }) => {
 
             <div className="space-y-3">
               {destination.itinerary.map((day, index) => (
-                <div
-                  key={index}
-                  className="border rounded-lg overflow-hidden"
-                >
+                <div key={index} className="border rounded-lg overflow-hidden">
                   <button
-                    onClick={() =>
-                      setOpenDay(openDay === index ? null : index)
-                    }
+                    onClick={() => setOpenDay(openDay === index ? null : index)}
                     className="w-full flex justify-between items-center p-3 bg-blue-50 hover:bg-blue-100 transition"
                   >
                     <div className="flex items-center space-x-2">
                       <Badge className="bg-blue-900 text-white text-xs px-2 py-1">
                         Day {day.day}
                       </Badge>
-                      <span className="font-medium text-blue-900 text-sm">
-                        {day.title}
-                      </span>
+                      <span className="font-medium text-blue-900 text-sm">{day.title}</span>
                     </div>
-                    <span className="text-blue-900 font-bold">
-                      {openDay === index ? '-' : '+'}
-                    </span>
+                    <span className="text-blue-900 font-bold">{openDay === index ? '-' : '+'}</span>
                   </button>
 
                   {openDay === index && (
                     <div className="p-3 bg-white">
-                      <p className="text-gray-700 text-sm leading-relaxed">
-                        {day.activities}
-                      </p>
+                      <p className="text-gray-700 text-sm leading-relaxed">{day.activities}</p>
                     </div>
                   )}
                 </div>
@@ -138,9 +118,7 @@ const DestinationModal = ({ destination, isOpen, onClose }) => {
 
           {/* Includes */}
           <div>
-            <h3 className="text-lg font-bold text-blue-900 mb-2">
-              Package Includes
-            </h3>
+            <h3 className="text-lg font-bold text-blue-900 mb-2">Package Includes</h3>
             <div className="bg-green-50 rounded-lg p-4">
               <ul className="space-y-2">
                 {destination.includes.map((item, index) => (
@@ -152,7 +130,6 @@ const DestinationModal = ({ destination, isOpen, onClose }) => {
               </ul>
             </div>
           </div>
-
         </div>
 
         {/* Sticky Book Button */}
@@ -166,10 +143,30 @@ const DestinationModal = ({ destination, isOpen, onClose }) => {
             Book Now via WhatsApp
           </Button>
         </div>
-
       </DialogContent>
     </Dialog>
   );
+};
+
+DestinationModal.propTypes = {
+  destination: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    duration: PropTypes.string.isRequired,
+    highlights: PropTypes.arrayOf(PropTypes.string).isRequired,
+    itinerary: PropTypes.arrayOf(
+      PropTypes.shape({
+        day: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        activities: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+    includes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }),
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default DestinationModal;

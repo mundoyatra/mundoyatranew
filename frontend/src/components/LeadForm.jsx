@@ -15,14 +15,14 @@ const LeadForm = () => {
     email: '',
     destination: '',
     travelDate: '',
-    message: ''
+    message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -39,7 +39,7 @@ const LeadForm = () => {
         email: '',
         destination: '',
         travelDate: '',
-        message: ''
+        message: '',
       });
     } catch (error) {
       toast.error('Something went wrong. Please try again.');

@@ -1,6 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, Linkedin, Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
+import {
+  Facebook,
+  Instagram,
+  Twitter,
+  Linkedin,
+  Mail,
+  Phone,
+  MapPin,
+  MessageCircle,
+} from 'lucide-react';
 import { contactInfo } from '../data/mock';
 
 const Footer = () => {
@@ -9,7 +18,7 @@ const Footer = () => {
     { path: '/about', label: 'About Us' },
     { path: '/services', label: 'Services' },
     { path: '/contact', label: 'Contact Us' },
-    { path: '/privacy', label: 'Privacy Policy' }
+    { path: '/privacy', label: 'Privacy Policy' },
   ];
 
   const serviceLinks = [
@@ -17,14 +26,14 @@ const Footer = () => {
     { path: '/services', label: 'Visa Assistance' },
     { path: '/domestic-packages', label: 'Domestic Tours' },
     { path: '/international-packages', label: 'International Tours' },
-    { path: '/services', label: 'Medical Tourism' }
+    { path: '/services', label: 'Medical Tourism' },
   ];
 
   const socialLinks = [
     { icon: Facebook, url: 'https://facebook.com', label: 'Facebook' },
     { icon: Instagram, url: 'https://instagram.com', label: 'Instagram' },
     { icon: Twitter, url: 'https://twitter.com', label: 'Twitter' },
-    { icon: Linkedin, url: 'https://linkedin.com', label: 'LinkedIn' }
+    { icon: Linkedin, url: 'https://linkedin.com', label: 'LinkedIn' },
   ];
 
   return (
@@ -44,7 +53,8 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-gray-400 text-sm mb-4">
-              Creating unforgettable travel experiences since 2013. Your trusted partner for all travel needs.
+              Creating unforgettable travel experiences since 2013. Your trusted partner for all
+              travel needs.
             </p>
             <div className="flex space-x-3">
               {socialLinks.map((social) => (
@@ -103,7 +113,10 @@ const Footer = () => {
               <li className="flex items-start space-x-3 text-sm">
                 <Phone className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
                 <div>
-                  <a href={`tel:${contactInfo.phone}`} className="text-gray-400 hover:text-yellow-400 transition-colors">
+                  <a
+                    href={`tel:${contactInfo.phone}`}
+                    className="text-gray-400 hover:text-yellow-400 transition-colors"
+                  >
                     {contactInfo.phone}
                   </a>
                 </div>
@@ -111,7 +124,10 @@ const Footer = () => {
               <li className="flex items-start space-x-3 text-sm">
                 <Mail className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
                 <div>
-                  <a href={`mailto:${contactInfo.email}`} className="text-gray-400 hover:text-yellow-400 transition-colors">
+                  <a
+                    href={`mailto:${contactInfo.email}`}
+                    className="text-gray-400 hover:text-yellow-400 transition-colors"
+                  >
                     {contactInfo.email}
                   </a>
                 </div>

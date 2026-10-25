@@ -1,23 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import * as LucideIcons from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 
 const iconMap = {
-  'plane': 'Plane',
+  plane: 'Plane',
   'file-check': 'FileCheck',
-  'map': 'Map',
-  'globe': 'Globe',
+  map: 'Map',
+  globe: 'Globe',
   'heart-pulse': 'HeartPulse',
-  'hotel': 'Hotel',
-  'car': 'Car',
-  'stamp': 'Stamp',
-  'languages': 'Languages',
+  hotel: 'Hotel',
+  car: 'Car',
+  stamp: 'Stamp',
+  languages: 'Languages',
   'badge-indian-rupee': 'BadgeIndianRupee',
-  'headset': 'Headset',
-  'sparkles': 'Sparkles',
-  'award': 'Award',
-  'network': 'Network',
-  'shield-check': 'ShieldCheck'
+  headset: 'Headset',
+  sparkles: 'Sparkles',
+  award: 'Award',
+  network: 'Network',
+  'shield-check': 'ShieldCheck',
 };
 
 const ServiceCard = ({ service }) => {
@@ -34,6 +35,14 @@ const ServiceCard = ({ service }) => {
       </CardContent>
     </Card>
   );
+};
+
+ServiceCard.propTypes = {
+  service: PropTypes.shape({
+    icon: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default ServiceCard;

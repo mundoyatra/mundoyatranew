@@ -1,15 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import DestinationCard from '../components/DestinationCard';
+import DestinationModal from '../components/DestinationModal';
 import LeadForm from '../components/LeadForm';
 import { internationalDestinations } from '../data/mock';
 
 const InternationalPackages = () => {
+  const [selectedDestination, setSelectedDestination] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleViewDestination = (destination) => {
+    setSelectedDestination(destination);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedDestination(null);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-      
+
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-b from-blue-900 to-blue-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -25,7 +39,11 @@ const InternationalPackages = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {internationalDestinations.map((destination) => (
-              <DestinationCard key={destination.id} destination={destination} />
+              <DestinationCard
+                key={destination.id}
+                destination={destination}
+                onViewDetails={() => handleViewDestination(destination)}
+              />
             ))}
           </div>
         </div>
@@ -46,7 +64,7 @@ const InternationalPackages = () => {
               'Airport transfers',
               'Sightseeing tours',
               'Travel insurance',
-              '24/7 support hotline'
+              '24/7 support hotline',
             ].map((feature, index) => (
               <div key={index} className="bg-white rounded-lg shadow-lg p-6 text-center">
                 <p className="text-gray-700 font-medium">{feature}</p>
@@ -59,31 +77,33 @@ const InternationalPackages = () => {
       {/* Popular Regions */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-blue-900 text-center mb-12">
-            Explore by Region
-          </h2>
+          <h2 className="text-3xl font-bold text-blue-900 text-center mb-12">Explore by Region</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 region: 'Southeast Asia',
                 countries: 'Thailand, Bali, Singapore, Vietnam, Malaysia',
-                image: 'https://images.unsplash.com/photo-1577717903315-1691ae25ab3f'
+                image:
+                  'https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?auto=format&fit=crop&w=800&q=70',
               },
               {
                 region: 'Middle East',
                 countries: 'Dubai, Abu Dhabi, Turkey, Jordan',
-                image: 'https://images.unsplash.com/flagged/photo-1559717201-fbb671ff56b7'
+                image:
+                  'https://images.unsplash.com/flagged/photo-1559717201-fbb671ff56b7?auto=format&fit=crop&w=800&q=70',
               },
               {
                 region: 'Europe',
                 countries: 'France, Italy, Switzerland, Spain, UK',
-                image: 'https://images.pexels.com/photos/28940115/pexels-photo-28940115.jpeg'
-              }
+                image:
+                  'https://images.pexels.com/photos/28940115/pexels-photo-28940115.jpeg?auto=compress&cs=tinysrgb&w=800',
+              },
             ].map((region, index) => (
               <div key={index} className="relative h-64 rounded-lg overflow-hidden shadow-xl group">
                 <img
                   src={region.image}
                   alt={region.region}
+                  loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
@@ -101,6 +121,12 @@ const InternationalPackages = () => {
       <LeadForm />
 
       <Footer />
+
+      <DestinationModal
+        destination={selectedDestination}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
     </div>
   );
 };

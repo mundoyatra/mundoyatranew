@@ -22,7 +22,7 @@ const Navbar = () => {
     { path: '/services', label: 'Services' },
     { path: '/domestic-packages', label: 'Domestic Packages' },
     { path: '/international-packages', label: 'International Packages' },
-    { path: '/contact', label: 'Contact' }
+    { path: '/contact', label: 'Contact' },
   ];
 
   const handleWhatsApp = () => {

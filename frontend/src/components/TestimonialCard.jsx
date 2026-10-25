@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, CardContent } from './ui/card';
 import { Star, Quote } from 'lucide-react';
 
@@ -19,15 +20,14 @@ const TestimonialCard = ({ testimonial }) => {
         </div>
 
         {/* Testimonial Text */}
-        <p className="text-gray-700 leading-relaxed mb-6 italic">
-          "{testimonial.text}"
-        </p>
+        <p className="text-gray-700 leading-relaxed mb-6 italic">"{testimonial.text}"</p>
 
         {/* Author Info */}
         <div className="flex items-center space-x-3 pt-4 border-t border-gray-200">
           <img
             src={testimonial.image}
             alt={testimonial.name}
+            loading="lazy"
             className="w-12 h-12 rounded-full"
           />
           <div>
@@ -38,6 +38,16 @@ const TestimonialCard = ({ testimonial }) => {
       </CardContent>
     </Card>
   );
+};
+
+TestimonialCard.propTypes = {
+  testimonial: PropTypes.shape({
+    rating: PropTypes.number.isRequired,
+    text: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default TestimonialCard;

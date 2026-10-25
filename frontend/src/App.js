@@ -1,20 +1,19 @@
-import React from "react";
-import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Toaster } from "./components/ui/sonner";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import DomesticPackages from "./pages/DomesticPackages";
-import InternationalPackages from "./pages/InternationalPackages";
-import Contact from "./pages/Contact";
-import Privacy from "./pages/Privacy";
+import React from 'react';
+import '@/App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Toaster } from './components/ui/sonner';
+import Home from './pages/Home';
+import About from './pages/About';
+import Services from './pages/Services';
+import DomesticPackages from './pages/DomesticPackages';
+import InternationalPackages from './pages/InternationalPackages';
+import Contact from './pages/Contact';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
+import NotFound from './pages/NotFound';
 
 function App() {
-  const basename =
-    process.env.NODE_ENV === "production"
-      ? "/mundoyatranew"
-      : "/";
+  const basename = process.env.NODE_ENV === 'production' ? '/mundoyatranew' : '/';
 
   return (
     <div className="App">
@@ -27,6 +26,8 @@ function App() {
           <Route path="/international-packages" element={<InternationalPackages />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
       <Toaster position="top-right" richColors />
