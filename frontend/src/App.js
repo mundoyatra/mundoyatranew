@@ -11,6 +11,9 @@ import Contact from './pages/Contact';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import NotFound from './pages/NotFound';
+import BlogCard from './components/BlogCard';
+import BlogDetails from './pages/BlogDetails';
+import FAQCard from './components/FAQCard';
 
 function App() {
   return (
@@ -25,6 +28,9 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/blogs" element={<BlogCard />} />
+          <Route path="/blogs/:slug" element={<BlogDetails />} />
+          <Route path="/faq" element={<FAQCard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -22,6 +22,8 @@ const Navbar = () => {
     { path: '/services', label: 'Services' },
     { path: '/domestic-packages', label: 'Domestic Packages' },
     { path: '/international-packages', label: 'International Packages' },
+    { path: '/blogs', label: 'Blog' },
+    { path: '/faq', label: 'FAQ' },
     { path: '/contact', label: 'Contact' },
   ];
 
