@@ -19,10 +19,15 @@ const DestinationModal = ({ destination, isOpen, onClose }) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent
-        showCloseButton={false}
-        className="max-w-5xl w-[95vw] h-[95vh] p-0 overflow-hidden rounded-2xl flex flex-col"
-      >
+      <DialogContent className="max-w-5xl w-[95vw] h-[95vh] p-0 overflow-hidden rounded-2xl flex flex-col">
+        {/* White Circular Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-50 w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 flex items-center justify-center"
+        >
+          <X className="w-4 h-4 text-white" />
+        </button>
+
         {/* Hero Section */}
         <div className="relative h-44 w-full flex-shrink-0">
           <img
@@ -32,14 +37,6 @@ const DestinationModal = ({ destination, isOpen, onClose }) => {
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-
-          {/* White Circular Close Button */}
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 flex items-center justify-center"
-          >
-            <X className="w-4 h-4 text-white" />
-          </button>
 
           <div className="absolute bottom-3 left-6 right-6 flex justify-between items-end">
             <div>

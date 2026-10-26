@@ -2,57 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
-
-const blogs = [
-  {
-    id: 1,
-    slug: 'top-10-tourist-places-in-india-you-must-visit-2026',
-    title: 'Top 10 Tourist Places in India You Must Visit in 2026',
-    description: 'Explore Goa, Manali, Kashmir, and Kerala for your next trip.',
-    image:
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=70',
-  },
-  {
-    id: 2,
-    slug: 'best-international-destinations-for-indian-travelers',
-    title: 'Best International Destinations for Indian Travelers',
-    description: 'Visit Dubai, Bali, Maldives & Thailand affordably.',
-    image:
-      'https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=800&q=70',
-  },
-  {
-    id: 3,
-    slug: 'how-to-book-cheap-flights-2026',
-    title: 'How to Book Cheap Flights in 2026',
-    description: 'Save money with smart booking tricks.',
-    image:
-      'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=800&q=70',
-  },
-  {
-    id: 4,
-    slug: 'best-honeymoon-destinations-in-india',
-    title: 'Best Honeymoon Destinations in India',
-    description: 'Romantic places like Manali, Goa & Udaipur.',
-    image:
-      'https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=70',
-  },
-  {
-    id: 5,
-    slug: 'budget-travel-tips-for-students',
-    title: 'Top Budget Travel Tips for Students',
-    description: 'Travel smart without spending too much.',
-    image:
-      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=70',
-  },
-  {
-    id: 6,
-    slug: 'complete-goa-trip-planning-guide',
-    title: 'Complete Guide to Goa Trip Planning',
-    description: 'Beaches, nightlife & itinerary for Goa.',
-    image:
-      'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=70',
-  },
-];
+import { blogs } from '../data/blogs';
+import { resizeImageUrl } from '../lib/utils';
 
 const BlogCard = () => {
   const navigate = useNavigate();
@@ -61,10 +12,17 @@ const BlogCard = () => {
     <div className="min-h-screen bg-white">
       <Navbar />
 
-      <section className="pt-32 pb-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-3xl font-bold text-blue-900 mb-10 text-center">Travel Blogs</h1>
+      <section className="pt-32 pb-16 bg-gradient-to-b from-blue-900 to-blue-800 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Travel Blogs & Guides</h1>
+          <p className="text-xl text-blue-100 max-w-2xl mx-auto">
+            Destination guides, booking tips, and travel inspiration from the Mundo Yatra team
+          </p>
+        </div>
+      </section>
 
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-6">
             {blogs.map((blog) => (
               <div
@@ -73,15 +31,21 @@ const BlogCard = () => {
                 className="cursor-pointer rounded-xl overflow-hidden shadow-md bg-white border-2 border-transparent transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-yellow-400"
               >
                 <img
-                  src={blog.image}
-                  alt={blog.title}
+                  src={resizeImageUrl(blog.coverImage, 500)}
+                  alt={blog.coverImageAlt}
                   loading="lazy"
                   className="w-full h-52 object-cover"
                 />
 
                 <div className="p-5">
+                  <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                    <span className="px-2 py-0.5 bg-blue-50 text-blue-900 rounded-full font-semibold">
+                      {blog.category}
+                    </span>
+                    <span>{blog.readTime}</span>
+                  </div>
                   <h3 className="text-xl font-semibold text-blue-900 mb-2">{blog.title}</h3>
-                  <p className="text-gray-600 mb-3">{blog.description}</p>
+                  <p className="text-gray-600 mb-3">{blog.excerpt}</p>
                   <span className="text-yellow-500 font-semibold">Read More →</span>
                 </div>
               </div>
