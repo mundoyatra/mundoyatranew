@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, MessageCircle } from 'lucide-react';
+import { Menu, X, Phone, MessageCircle, UserCircle } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Navbar = () => {
@@ -90,6 +90,13 @@ const Navbar = () => {
               <MessageCircle className="w-4 h-4 mr-2" />
               WhatsApp
             </Button>
+            <Link
+              to="/admin/login"
+              aria-label="Admin Login"
+              className="p-2 rounded-full text-gray-500 hover:text-blue-900 hover:bg-blue-50 transition-colors"
+            >
+              <UserCircle className="w-6 h-6" />
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -132,6 +139,14 @@ const Navbar = () => {
                   <MessageCircle className="w-4 h-4 mr-2" />
                   WhatsApp
                 </Button>
+                <Link
+                  to="/admin/login"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center justify-center gap-2 text-sm text-gray-500 hover:text-blue-900 py-2"
+                >
+                  <UserCircle className="w-4 h-4" />
+                  Admin Login
+                </Link>
               </div>
             </div>
           </div>

@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ServiceCard from '../components/ServiceCard';
 import LeadForm from '../components/LeadForm';
-import { services } from '../data/mock';
+import { api } from '../lib/api';
 
 const Services = () => {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    api
+      .get('/services')
+      .then((res) => setServices(res.data))
+      .catch(() => {});
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />

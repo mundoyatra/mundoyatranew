@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { blogs } from '../data/blogs';
+import { api } from '../lib/api';
 import { resizeImageUrl } from '../lib/utils';
 
 const BlogCard = () => {
   const navigate = useNavigate();
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    api
+      .get('/blogs')
+      .then((res) => setBlogs(res.data))
+      .catch(() => {});
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">

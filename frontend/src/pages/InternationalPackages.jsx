@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import DestinationCard from '../components/DestinationCard';
 import DestinationModal from '../components/DestinationModal';
 import LeadForm from '../components/LeadForm';
-import { internationalDestinations } from '../data/mock';
+import { api } from '../lib/api';
 
 const InternationalPackages = () => {
   const [selectedDestination, setSelectedDestination] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [internationalDestinations, setInternationalDestinations] = useState([]);
+
+  useEffect(() => {
+    api
+      .get('/international-destinations')
+      .then((res) => setInternationalDestinations(res.data))
+      .catch(() => {});
+  }, []);
 
   const handleViewDestination = (destination) => {
     setSelectedDestination(destination);

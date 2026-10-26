@@ -7,9 +7,11 @@ const { pool, initSchema } = require("./db");
 
 const app = express();
 app.use(express.json());
+
+const corsOriginsEnv = process.env.CORS_ORIGINS || "*";
 app.use(
   cors({
-    origin: (process.env.CORS_ORIGINS || "*").split(","),
+    origin: corsOriginsEnv === "*" ? "*" : corsOriginsEnv.split(","),
   })
 );
 
@@ -57,49 +59,14 @@ api.get(
   })
 );
 
-const leadSchema = z.object({
-  name: z.string().min(1, "name is required"),
-  phone: z.string().min(1, "phone is required"),
-  email: z.string().email("a valid email is required"),
-  destination: z.string().min(1, "destination is required"),
-  travelDate: z.string().optional().nullable(),
-  message: z.string().optional().nullable(),
-});
-
-api.post(
-  "/leads",
-  asyncHandler(async (req, res) => {
-    const parsed = leadSchema.safeParse(req.body);
-    if (!parsed.success) {
-      return res.status(400).json({ error: parsed.error.issues[0].message });
-    }
-    const { name, phone, email, destination, travelDate, message } = parsed.data;
-
-    const id = randomUUID();
-    const createdAt = new Date();
-
-    await pool.query(
-      "INSERT INTO leads (id, name, phone, email, destination, travel_date, message, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-      [id, name, phone, email, destination, travelDate || null, message || null, createdAt]
-    );
-
-    res.json({
-      success: true,
-      message: "Thank you! We will contact you soon.",
-      leadId: id,
-    });
-  })
-);
-
-api.get(
-  "/leads",
-  asyncHandler(async (req, res) => {
-    const [rows] = await pool.query(
-      "SELECT id, name, phone, email, destination, travel_date, message, created_at FROM leads ORDER BY created_at DESC LIMIT 1000"
-    );
-    res.json(rows);
-  })
-);
+api.use("/admin", require("./routes/auth"));
+api.use("/leads", require("./routes/leads"));
+api.use("/services", require("./routes/services"));
+api.use("/domestic-destinations", require("./routes/destinations").createDestinationRouter("domestic_destinations"));
+api.use("/international-destinations", require("./routes/destinations").createDestinationRouter("international_destinations"));
+api.use("/blogs", require("./routes/blogs"));
+api.use("/faqs", require("./routes/faqs"));
+api.use("/testimonials", require("./routes/testimonials"));
 
 app.use("/api", api);
 

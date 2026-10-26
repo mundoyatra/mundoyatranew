@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Calendar, Clock, ArrowLeft, MessageCircle } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { blogs, getBlogBySlug } from '../data/blogs';
+import { api } from '../lib/api';
 import { resizeImageUrl } from '../lib/utils';
 
 const renderBlock = (block, index) => {
@@ -59,9 +59,25 @@ const renderBlock = (block, index) => {
 const BlogDetails = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
-  const blog = getBlogBySlug(slug);
+  const [blog, setBlog] = useState(null);
+  const [notFound, setNotFound] = useState(false);
+  const [relatedBlogs, setRelatedBlogs] = useState([]);
 
-  if (!blog) {
+  useEffect(() => {
+    setBlog(null);
+    setNotFound(false);
+    api
+      .get(`/blogs/${slug}`)
+      .then((res) => setBlog(res.data))
+      .catch(() => setNotFound(true));
+
+    api
+      .get('/blogs')
+      .then((res) => setRelatedBlogs(res.data.filter((b) => b.slug !== slug).slice(0, 3)))
+      .catch(() => {});
+  }, [slug]);
+
+  if (notFound) {
     return (
       <div className="min-h-screen bg-white">
         <Navbar />
@@ -71,6 +87,16 @@ const BlogDetails = () => {
             ← Back to Blogs
           </Link>
         </section>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (!blog) {
+    return (
+      <div className="min-h-screen bg-white">
+        <Navbar />
+        <section className="pt-32 pb-16 text-center text-gray-400">Loading...</section>
         <Footer />
       </div>
     );
@@ -92,8 +118,6 @@ const BlogDetails = () => {
       name: 'Mundo Yatra',
     },
   };
-
-  const relatedBlogs = blogs.filter((b) => b.slug !== blog.slug).slice(0, 3);
 
   const handleWhatsApp = () => {
     const message = `Hi! I read your blog "${blog.title}" and I'd like to know more about planning a trip.`;

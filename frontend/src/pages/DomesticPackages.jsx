@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import DestinationCard from '../components/DestinationCard';
 import DestinationModal from '../components/DestinationModal';
 import LeadForm from '../components/LeadForm';
-import { indianDestinations } from '../data/mock';
+import { api } from '../lib/api';
 
 const DomesticPackages = () => {
   const [selectedDestination, setSelectedDestination] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [indianDestinations, setIndianDestinations] = useState([]);
+
+  useEffect(() => {
+    api
+      .get('/domestic-destinations')
+      .then((res) => setIndianDestinations(res.data))
+      .catch(() => {});
+  }, []);
 
   const handleViewDestination = (destination) => {
     setSelectedDestination(destination);

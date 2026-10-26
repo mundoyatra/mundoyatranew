@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import HeroSection from '../components/HeroSection';
@@ -9,14 +9,8 @@ import TestimonialCard from '../components/TestimonialCard';
 import LeadForm from '../components/LeadForm';
 import { Card, CardContent } from '../components/ui/card';
 import * as LucideIcons from 'lucide-react';
-import {
-  services,
-  indianDestinations,
-  internationalDestinations,
-  testimonials,
-  whyChooseUs,
-  aboutContent,
-} from '../data/mock';
+import { whyChooseUs, aboutContent } from '../data/mock';
+import { api } from '../lib/api';
 
 const iconMap = {
   'badge-indian-rupee': 'BadgeIndianRupee',
@@ -30,6 +24,29 @@ const iconMap = {
 const Home = () => {
   const [selectedDestination, setSelectedDestination] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [services, setServices] = useState([]);
+  const [indianDestinations, setIndianDestinations] = useState([]);
+  const [internationalDestinations, setInternationalDestinations] = useState([]);
+  const [testimonials, setTestimonials] = useState([]);
+
+  useEffect(() => {
+    api
+      .get('/services')
+      .then((res) => setServices(res.data))
+      .catch(() => {});
+    api
+      .get('/domestic-destinations')
+      .then((res) => setIndianDestinations(res.data))
+      .catch(() => {});
+    api
+      .get('/international-destinations')
+      .then((res) => setInternationalDestinations(res.data))
+      .catch(() => {});
+    api
+      .get('/testimonials')
+      .then((res) => setTestimonials(res.data))
+      .catch(() => {});
+  }, []);
 
   const handleViewDestination = (destination) => {
     setSelectedDestination(destination);

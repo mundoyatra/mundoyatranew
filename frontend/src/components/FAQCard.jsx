@@ -1,49 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as LucideIcons from 'lucide-react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { Card, CardContent } from './ui/card';
-
-const faqs = [
-  {
-    question: 'How do I book a travel package with Mundo Yatra?',
-    answer:
-      'Booking a travel package with Mundo Yatra is simple and hassle-free. You can explore our domestic and international tour packages, fill out the inquiry form, or contact our travel experts directly. We assist you with flight bookings, hotel reservations, itinerary planning, and complete holiday package customization.',
-  },
-  {
-    question: 'Do you offer customized holiday packages for India and international destinations?',
-    answer:
-      'Yes, Mundo Yatra specializes in customized travel packages for both Indian and international destinations. Whether you are planning a honeymoon, family vacation, group tour, or solo trip, we create personalized itineraries including flights, hotels, sightseeing, and transfers based on your budget and preferences.',
-  },
-  {
-    question: 'Are flights and hotel bookings included in your tour packages?',
-    answer:
-      'Most of our tour packages include flight bookings, hotel accommodations, airport transfers, and guided sightseeing. We offer flexible options where you can choose complete packages or only specific services like flight tickets or hotel bookings.',
-  },
-  {
-    question: 'Which are the best travel destinations you offer packages for?',
-    answer:
-      'We offer travel packages for top destinations in India such as Goa, Manali, Kashmir, Kerala, and Rajasthan, as well as international destinations like Dubai, Bali, Maldives, Thailand, and Europe. Our packages are designed to provide the best travel experience at competitive prices.',
-  },
-  {
-    question: 'Do you provide visa assistance and travel insurance for international trips?',
-    answer:
-      'Yes, Mundo Yatra provides complete travel assistance including visa support, documentation guidance, and travel insurance for international trips. Our team ensures a smooth and stress-free travel experience from booking to return.',
-  },
-  {
-    question: 'What is the cancellation and refund policy for travel bookings?',
-    answer:
-      'Our cancellation and refund policies depend on the specific travel package, airline, and hotel bookings. We ensure transparent policies and guide you through cancellation charges, refunds, and rescheduling options before confirming your booking.',
-  },
-  {
-    question: 'Why should I choose Mundo Yatra for travel and tour packages?',
-    answer:
-      'Mundo Yatra is a trusted travel agency offering affordable tour packages, expert travel planning, and 24/7 customer support. We provide the best deals on flights, hotels, and holiday packages with personalized service to ensure a memorable travel experience.',
-  },
-];
+import { api } from '../lib/api';
 
 const FAQCard = () => {
+  const [faqs, setFaqs] = useState([]);
   const [activeIndex, setActiveIndex] = useState(null);
+
+  useEffect(() => {
+    api
+      .get('/faqs')
+      .then((res) => setFaqs(res.data))
+      .catch(() => {});
+  }, []);
 
   const toggleFAQ = (index) => {
     setActiveIndex(index === activeIndex ? null : index);
